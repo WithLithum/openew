@@ -1,0 +1,6 @@
+dispatch minecraft:loot_condition[openew:id] to struct IdPredicate {
+    value: int @ 0..,
+}
+
+dispatch minecraft:loot_condition[openew:offhand_equippable] to struct OffhandEquippablePredicate {
+}

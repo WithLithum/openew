@@ -1,0 +1,50 @@
+{
+	"schemaVersion": 1,
+	"id": "openew",
+	"version": "${version}",
+	"name": "OpenEW",
+	"description": "Utilities for efficient porting of The Ender War to newer versions",
+	"authors": [
+		"WithLithum"
+	],
+	"contact": {
+		"sources": "https://github.com/WithLithum/OpenEW"
+	},
+	"license": "GPL-3.0-or-later",
+	"icon": "assets/openew/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			{
+				"value": "x.withlithum.openew.OpenEW",
+				"adapter": "kotlin"
+			}
+		],
+		"client": [
+			{
+				"value": "x.withlithum.openew.client.OpenEWClient",
+				"adapter": "kotlin"
+			}
+		],
+		"fabric-datagen": [
+			{
+				"value": "x.withlithum.openew.OpenEWDataGenerator",
+				"adapter": "kotlin"
+			}
+		]
+	},
+	"mixins": [
+		"openew.mixins.json",
+		{
+			"config": "openew.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.17.3",
+		"minecraft": "~1.21.10",
+		"java": ">=21",
+		"fabric-api": "*",
+		"fabric-language-kotlin": "*"
+	}
+}

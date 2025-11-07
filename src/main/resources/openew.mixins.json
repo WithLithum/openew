@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "package": "x.withlithum.openew.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "ScoreboardCommandHudFlagMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+	}
+}
