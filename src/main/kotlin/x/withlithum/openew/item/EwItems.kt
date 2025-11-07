@@ -1,5 +1,6 @@
 package x.withlithum.openew.item
 
+import net.minecraft.core.component.DataComponentType
 import net.minecraft.world.item.ItemStack
 import x.withlithum.openew.component.EwDataComponents
 
