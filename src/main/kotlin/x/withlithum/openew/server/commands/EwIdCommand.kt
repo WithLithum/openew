@@ -70,6 +70,10 @@ object EwIdCommand {
             return 0
         }
 
+        // I don't know why Mojang insisted that there **has** to be a lambda here
+        ctx.source.sendSuccess({ Component.translatable("openew.commands.ewid.success",
+            component) },
+            false)
         return component
     }
 }

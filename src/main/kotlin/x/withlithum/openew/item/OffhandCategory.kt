@@ -17,29 +17,54 @@
 package x.withlithum.openew.item
 
 import com.mojang.serialization.Codec
+import net.minecraft.util.StringRepresentable
 
-enum class OffhandCategory() {
-    NON_EQUIPPABLE,
+enum class OffhandCategory : StringRepresentable {
+    /**
+     * The item does not do anything with offhand and should not be put into offhand.
+     */
+    NONE,
+
+    /**
+     * The currently equipped [SHIELD] item should be placed into offhand when the item is held in
+     * main hand.
+     */
+    MELEE,
+
+    /**
+     * The associated ammo should be placed into offhand when the item is held in offhand.
+     */
+    BOW,
+
+    /**
+     * The item is a shield and should be equipped when a [MELEE] item is held in main hand.
+     */
     SHIELD,
+
+    /**
+     * The item is a reusable potion elixir and its consumable equivalent should be placed into
+     * offhand when it is held in main hand.
+     */
     REUSABLE_POTION,
+
+    /**
+     * A copy of the item from main hand should be duplicated into the offhand, with its category
+     * set to [EQUIPPED].
+     */
+    DUAL_WIELD,
+
+    /**
+     * The item is currently equipped in offhand.
+     */
     EQUIPPED;
+
+    override fun getSerializedName(): String? {
+        return this.name.lowercase()
+    }
 
     companion object {
         @JvmField
-        val CODEC: Codec<OffhandCategory?> = Codec.STRING.xmap(this::valueOf, this::nameOf)
-
-        private fun nameOf(value: OffhandCategory): String {
-            return value.name.lowercase()
-        }
-
-        private fun valueOf(value: String): OffhandCategory {
-            return when(value) {
-                "non_equippable" -> NON_EQUIPPABLE
-                "shield" -> SHIELD
-                "reusable_potion" -> REUSABLE_POTION
-                "equipped" -> EQUIPPED
-                else -> NON_EQUIPPABLE
-            }
-        }
+        val CODEC: Codec<OffhandCategory?> =
+            StringRepresentable.fromEnum(OffhandCategory::values)
     }
 }

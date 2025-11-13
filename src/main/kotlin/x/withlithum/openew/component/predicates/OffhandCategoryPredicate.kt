@@ -22,9 +22,9 @@ data class OffhandCategoryPredicate(val value: OffhandCategory?) : DataComponent
 
     override fun matches(componentGetter: DataComponentGetter): Boolean {
         val itemCategory = componentGetter.getOrDefault(EwDataComponents.OFFHAND_CATEGORY,
-            OffhandCategory.NON_EQUIPPABLE)
+            OffhandCategory.NONE)
 
-        if (value == null && (itemCategory == null || itemCategory == OffhandCategory.NON_EQUIPPABLE))
+        if (value == null && (itemCategory == null || itemCategory == OffhandCategory.NONE))
         {
             return true
         }

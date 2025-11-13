@@ -14,8 +14,14 @@ val ItemStack.isOffhandEquippable: Boolean
  * Assists dealing with items.
  */
 object EwItems {
+    /**
+     * Returns the identifier associated with the specified item stack.
+     *
+     * @return The numeric identifier, or <c>0</c> if it does not have one.
+     * @see EwDataComponents.ID
+     */
     fun getId(item: ItemStack) : Int {
-        val component = item.get(EwDataComponents.ID) ?: return -1
+        val component = item.get(EwDataComponents.ID) ?: return 0
         return component;
     }
 }
