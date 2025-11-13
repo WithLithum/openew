@@ -1,0 +1,5 @@
+{
+  "openew.commands.ewid.no_id": "The specified item does not have an ID",
+  "openew.commands.ewid.no_item": "The specified slot is empty or does not exist",
+  "openew.commands.ewid.success": "The ID of the specified item is %d"
+}

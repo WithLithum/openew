@@ -15,7 +15,7 @@ object EwDataComponents {
      */
     val ID: DataComponentType<Int?> = register(
         "id"
-    ) { it.persistent(ExtraCodecs.NON_NEGATIVE_INT)
+    ) { it.persistent(ExtraCodecs.POSITIVE_INT)
             .networkSynchronized(ByteBufCodecs.VAR_INT)
     }
 
