@@ -7,12 +7,13 @@ import net.minecraft.core.registries.BuiltInRegistries
 import x.withlithum.openew.OpenEW
 import x.withlithum.openew.util.EwKey
 
+@Suppress("unused")
 object EwDataComponentPredicates {
     @JvmField
     val ID = register("id", IdPredicate.CODEC)
 
     @JvmField
-    val OFFHAND_EQUIPPABLE = register("offhand_equippable", OffhandEquippablePredicate.CODEC)
+    val OFFHAND_CATEGORY = register("offhand_category", OffhandCategoryPredicate.CODEC)
 
     private fun <T> register(name: String, codec: Codec<T>): DataComponentPredicate.Type<T>
             where T : DataComponentPredicate {

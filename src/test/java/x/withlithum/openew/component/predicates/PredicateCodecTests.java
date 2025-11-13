@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import x.withlithum.openew.component.EwDataComponents;
+import x.withlithum.openew.item.OffhandCategory;
 
 public class PredicateCodecTests {
     @BeforeAll
@@ -37,12 +38,13 @@ public class PredicateCodecTests {
     void testOffhandEquippableCodecDecodes() {
         // Arrange
         final var gson = new Gson();
-        final var element = gson.fromJson("{\"value\":true}", JsonObject.class);
+        final var element = gson.fromJson("{\"value\":\"reusable_potion\"}", JsonObject.class);
 
         // Act
-        final var result = OffhandEquippablePredicate.CODEC.decode(JsonOps.INSTANCE, element);
+        final var result = OffhandCategoryPredicate.CODEC.decode(JsonOps.INSTANCE, element);
 
         // Assert
-        Assertions.assertTrue(result.getOrThrow().getFirst().value());
+        Assertions.assertEquals(OffhandCategory.REUSABLE_POTION,
+                result.getOrThrow().getFirst().value());
     }
 }

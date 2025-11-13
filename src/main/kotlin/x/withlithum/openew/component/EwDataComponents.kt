@@ -5,8 +5,8 @@ import net.minecraft.core.component.DataComponentType
 import net.minecraft.core.registries.BuiltInRegistries
 import net.minecraft.network.codec.ByteBufCodecs
 import net.minecraft.util.ExtraCodecs
-import net.minecraft.util.Unit
 import x.withlithum.openew.OpenEW
+import x.withlithum.openew.item.OffhandCategory
 import x.withlithum.openew.util.EwKey.of
 
 object EwDataComponents {
@@ -19,13 +19,12 @@ object EwDataComponents {
             .networkSynchronized(ByteBufCodecs.VAR_INT)
     }
 
-    val OFFHAND_EQUIPPABLE: DataComponentType<Unit?> = register(
-        "offhand_equippable"
-    ) { it.persistent(Unit.CODEC)
-            .networkSynchronized(Unit.STREAM_CODEC) }
+    val OFFHAND_CATEGORY: DataComponentType<OffhandCategory?> = register(
+        "offhand_category"
+    ) { it.persistent(OffhandCategory.CODEC) }
 
     private fun <T> register(name: String,
-                             action: (it: DataComponentType.Builder<T>) -> kotlin.Unit) : DataComponentType<T> {
+                             action: (it: DataComponentType.Builder<T>) -> Unit) : DataComponentType<T> {
         val builder = DataComponentType.builder<T>()
         action(builder)
 

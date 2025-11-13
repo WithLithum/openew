@@ -16,53 +16,48 @@
 
 package x.withlithum.openew.item.loot.functions
 
-import com.mojang.serialization.Codec
 import com.mojang.serialization.MapCodec
 import com.mojang.serialization.codecs.RecordCodecBuilder
-import net.minecraft.util.Unit
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.level.storage.loot.LootContext
 import net.minecraft.world.level.storage.loot.functions.LootItemConditionalFunction
 import net.minecraft.world.level.storage.loot.functions.LootItemFunctionType
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition
 import x.withlithum.openew.component.EwDataComponents
+import x.withlithum.openew.item.OffhandCategory
 
 /**
  * Defines a [loot function](https://minecraft.wiki/w/Item_modifier#Function_types) that adds or
- * removes [`openew:offhand_equippable`][EwDataComponents.OFFHAND_EQUIPPABLE] component based on
- * the provided [switch][value].
+ * removes [`openew:offhand_category`][EwDataComponents.OFFHAND_CATEGORY] component based on the
+ * provided [value][value].
  */
-class SetOffhandEquippableFunction(
+class SetOffhandCategoryFunction(
     predicates: MutableList<LootItemCondition>,
-    val value: Boolean
+    val value: OffhandCategory
 ) :
     LootItemConditionalFunction(predicates) {
 
     override fun getType(): LootItemFunctionType<out LootItemConditionalFunction?> {
-        return EwLootFunctions.SET_OFFHAND_EQUIPPABLE
+        return EwLootFunctions.SET_OFFHAND_CATEGORY
     }
 
     override fun run(
         stack: ItemStack,
         context: LootContext
     ): ItemStack {
-        if (value && !stack.has(EwDataComponents.OFFHAND_EQUIPPABLE)) {
-            stack.set(EwDataComponents.OFFHAND_EQUIPPABLE, Unit.INSTANCE)
-        } else if (value && stack.has(EwDataComponents.OFFHAND_EQUIPPABLE)) {
-            stack.remove(EwDataComponents.OFFHAND_EQUIPPABLE)
-        }
+        stack.set(EwDataComponents.OFFHAND_CATEGORY, value)
 
         return stack
     }
 
     companion object {
-        val CODEC: MapCodec<SetOffhandEquippableFunction> = RecordCodecBuilder.mapCodec {
+        val CODEC: MapCodec<SetOffhandCategoryFunction> = RecordCodecBuilder.mapCodec {
             commonFields(it)
-                .and<Boolean>(
-                    Codec.BOOL.fieldOf("value").forGetter { instance: SetOffhandEquippableFunction ->
-                        instance.value
+                .and<OffhandCategory>(
+                    OffhandCategory.CODEC.fieldOf("value").forGetter {
+                        instance -> instance.value
                     })
-                .apply(it, ::SetOffhandEquippableFunction)
+                .apply(it, ::SetOffhandCategoryFunction)
         }
     }
 }

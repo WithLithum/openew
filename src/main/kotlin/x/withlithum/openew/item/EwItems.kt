@@ -1,15 +1,14 @@
 package x.withlithum.openew.item
 
-import net.minecraft.core.component.DataComponentType
 import net.minecraft.world.item.ItemStack
 import x.withlithum.openew.component.EwDataComponents
 
 /**
  * Gets a value indicating whether the current instance is marked as equippable in offhand.
- * @see EwDataComponents.OFFHAND_EQUIPPABLE
+ * @see EwDataComponents.OFFHAND_CATEGORY
  */
 val ItemStack.isOffhandEquippable: Boolean
-    get() = has(EwDataComponents.OFFHAND_EQUIPPABLE)
+    get() = has(EwDataComponents.OFFHAND_CATEGORY)
 
 /**
  * Assists dealing with items.

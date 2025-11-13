@@ -30,8 +30,8 @@ import x.withlithum.openew.util.EwKey
 object EwLootFunctions {
 
     val SET_ID = register("set_id", SetIdFunction.CODEC)
-    val SET_OFFHAND_EQUIPPABLE = register("set_offhand_equippable",
-        SetOffhandEquippableFunction.CODEC)
+    val SET_OFFHAND_CATEGORY = register("set_offhand_category",
+        SetOffhandCategoryFunction.CODEC)
 
     private fun <T> register(name: String, codec: MapCodec<T>): LootItemFunctionType<T>
             where T : LootItemFunction {
