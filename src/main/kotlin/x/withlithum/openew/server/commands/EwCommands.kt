@@ -23,6 +23,12 @@ import net.minecraft.commands.CommandSourceStack
  * Registers OpenEW commands centrally.
  */
 object EwCommands {
+    /**
+     * Registers the OpenEW commands to the specified [CommandDispatcher].
+     *
+     * @param dispatcher The command dispatcher. The associated command source must be
+     * [CommandSourceStack].
+     */
     fun register(dispatcher: CommandDispatcher<CommandSourceStack>) {
         EwIdCommand.register(dispatcher)
     }

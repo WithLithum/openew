@@ -4,12 +4,18 @@ import net.fabricmc.api.ClientModInitializer
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking
 import x.withlithum.openew.network.protocol.ClientboundSetClientFlagPayload
-import x.withlithum.openew.util.EwLog
+import x.withlithum.openew.util.ewLogger
 import x.withlithum.openew.util.properties.ClientFlags
 
+/**
+ * Implements client protocol and functions.
+ */
 object OpenEWClient : ClientModInitializer {
-    private val LOGGER = EwLog.getLogger<OpenEWClient>()
+    private val LOGGER = ewLogger<OpenEWClient>()
 
+    /**
+     * Serves as the client-sided entry point of the OpenEW mod.
+     */
 	override fun onInitializeClient() {
         LOGGER.info("Initializing OpenEW client")
 

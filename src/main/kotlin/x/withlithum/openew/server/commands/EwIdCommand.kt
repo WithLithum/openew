@@ -35,6 +35,11 @@ import x.withlithum.openew.component.EwDataComponents
  * @author WithLithum
  */
 object EwIdCommand {
+    /**
+     * Registers this command to the specified dispatcher.
+     *
+     * @param dispatcher The dispatcher to register to.
+     */
     fun register(dispatcher: CommandDispatcher<CommandSourceStack>) {
         dispatcher.register(
             Commands.literal("ewid")

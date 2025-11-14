@@ -19,6 +19,9 @@ package x.withlithum.openew.item
 import com.mojang.serialization.Codec
 import net.minecraft.util.StringRepresentable
 
+/**
+ * Specifies the action that should be taken with an item regarding the offhand slot.
+ */
 enum class OffhandCategory : StringRepresentable {
     /**
      * The item does not do anything with offhand and should not be put into offhand.
@@ -58,11 +61,19 @@ enum class OffhandCategory : StringRepresentable {
      */
     EQUIPPED;
 
+    /**
+     * Gets the serialized name of the current instance.
+     *
+     * @return The name of the current instance, converted to lower case.
+     */
     override fun getSerializedName(): String? {
         return this.name.lowercase()
     }
 
     companion object {
+        /**
+         * The codec of this instance.
+         */
         @JvmField
         val CODEC: Codec<OffhandCategory?> =
             StringRepresentable.fromEnum(OffhandCategory::values)

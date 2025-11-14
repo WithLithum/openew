@@ -1,18 +1,18 @@
 package x.withlithum.openew.network
 
 import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents
-import net.fabricmc.fabric.api.event.lifecycle.v1.ServerWorldEvents
 import net.fabricmc.fabric.api.networking.v1.PlayerLookup
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
 import net.minecraft.server.MinecraftServer
 import net.minecraft.server.ServerScoreboard
-import net.minecraft.server.level.ServerLevel
 import net.minecraft.server.level.ServerPlayer
 import net.minecraft.world.scores.ScoreHolder
-import x.withlithum.openew.OpenEW
 import x.withlithum.openew.network.protocol.ClientboundSetClientFlagPayload
 import x.withlithum.openew.util.properties.ClientFlags
 
+/**
+ * Implements client state management and the scoreboard compatibility API.
+ */
 object ClientStateManager {
     fun attachEvents() {
         ServerPlayerEvents.JOIN.register(this::onPlayerJoin)

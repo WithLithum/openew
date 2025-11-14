@@ -10,6 +10,11 @@ import kotlin.math.ceil
 object HealthDisplay {
     private var hide: Boolean = false
 
+    /**
+     * Specifies whether to hide the health display component.
+     *
+     * @see [x.withlithum.openew.network.protocol.ClientboundSetClientFlagPayload]
+     */
     fun changeHide(value: Boolean) {
         hide = value
     }
