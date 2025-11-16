@@ -10,13 +10,14 @@ import x.withlithum.openew.network.ClientStateManager
 import x.withlithum.openew.network.protocol.ClientboundSetClientFlagPayload
 import x.withlithum.openew.server.commands.EwCommands
 import x.withlithum.openew.util.EwLog
+import x.withlithum.openew.util.ewLogger
 
 /**
  * Serves as the common entry point of the OpenEW mod.
  */
 object OpenEW : ModInitializer {
     @JvmField
-    val LOGGER = EwLog.getLogger<OpenEW>()
+    val LOGGER = ewLogger<OpenEW>()
 
     const val MOD_ID = "openew"
 
